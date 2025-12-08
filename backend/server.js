@@ -1,0 +1,29 @@
+import express from "express"
+import dotenv from "dotenv"
+import connectDB from "./database/db.js";
+import userRoute from "./routes/user.route.js"
+import cors from "cors"
+
+dotenv.config();
+const app = express();
+
+//default middleware
+app.use(express.json());
+app.use(express.urlencoded({extended:true}))
+
+//corse
+app.use(cors({
+  origin:"http://localhost:5173",
+  credentials:true
+}));
+
+const PORT = process.env.PORT || 3000;
+
+//routes
+app.use("/api/v1/user",userRoute)
+
+app.listen(PORT, () =>{
+  //db connection
+  connectDB();
+  console.log(`Server is running at port : ${PORT}`)
+})
