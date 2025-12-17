@@ -146,15 +146,23 @@ export const updateProfile = async (req, res) => {
     const { firstName, lastName, occupation, bio, instagram, facebook, linkedin, github }
       = req.body;
     const file = req.file;
-    const fileUri = getDataUri(file)
-    let cloudResponse = await cloudinary.uploader.upload(fileUri);
-    console.log(cloudResponse)
+
+    let photoUrl = null;
+
+    // only process file if it exists
+    if(file){
+      const fileUri = getDataUri(file)
+      let cloudResponse = await cloudinary.uploader.upload(fileUri);
+      photoUrl = cloudResponse.secure_url;
+      
+    }
+    // console.log(cloudResponse)
 
     const user = await User.findById(userId).select("-password");
     if(!user){
       return res.status(404).json({
         success:false,
-        message:"USer not found"
+        message:"User not found"
       })
     }
 
@@ -165,10 +173,13 @@ export const updateProfile = async (req, res) => {
     if(instagram) user.instagram = instagram;
     if(facebook) user.facebook = facebook;
     if(linkedin) user.linkedin = linkedin;
-    if(github) uesr.github = github;
+    if(github) user.github = github;
     if(bio) user.bio = bio;
 
-    if(file) user.photoUrl = cloudResponse.secure_url;
+    // Only upload photoUrl if a new file was uploaded
+    if(photoUrl){
+      user.photoUrl = photoUrl;
+    }
 
     await user.save()
     return res.status(200).json({

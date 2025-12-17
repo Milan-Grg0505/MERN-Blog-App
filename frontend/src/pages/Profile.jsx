@@ -133,141 +133,138 @@ const Profile = () => {
               {/* Edit Profile Dialog */}
 
               <Dialog open={open} onOpenChange={setOpen}>
-                <form>
+                <Button
+                  onClick={() => setOpen(true)}>Edit Profile
+                </Button>
 
-                  <Button
-                    onClick={() => setOpen(true)}>Edit Profile
-                  </Button>
+                <DialogContent className="sm:max-w-[425px]">
+                  <DialogHeader>
+                    <DialogTitle className="text-center">Edit profile</DialogTitle>
+                    <DialogDescription className="text-center mb-1">
+                      Make changes to your profile here.
+                    </DialogDescription>
+                  </DialogHeader>
 
-                  <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                      <DialogTitle className="text-center">Edit profile</DialogTitle>
-                      <DialogDescription className="text-center mb-1">
-                        Make changes to your profile here.
-                      </DialogDescription>
-                    </DialogHeader>
-
-                    <div className="grid gap-4">
-                      {/* first name and last name */}
-                      <div className='flex gap-2'>
-                        <div className='space-y-2'>
-                          <Label htmlFor="firstName">First Name</Label>
-                          <Input
-                            name="firstName"
-                            placeholder="First Name"
-                            type="text"
-                            className="text-gray-500"
-                            value={input.firstName}
-                            onChange={handleChange}
-                          />
-                        </div>
-                        <div className='space-y-2'>
-                          <Label htmlFor="lastName">
-                            Last Name
-                          </Label>
-                          <Input
-                            name="lastName"
-                            type="text"
-                            placeholder="Last Name"
-                            className="text-gray-500"
-                            value={input.lastName}
-                            onChange={handleChange}
-                          />
-                        </div>
-
-                      </div>
-
-                      {/* facebook and instagram */}
-                      <div className='flex gap-2'>
-                        <div className='space-y-2'>
-                          <Label htmlFor="facebook">Facebook Name</Label>
-                          <Input
-                            name="facebook"
-                            placeholder="Enter a URL"
-                            type="text"
-                            className="text-gray-500"
-                            value={input.facebook}
-                            onChange={handleChange}
-                          />
-                        </div>
-                        <div className='space-y-2'>
-                          <Label htmlFor="instagram">
-                            Instagram
-                          </Label>
-                          <Input
-                            name="instagram"
-                            type="text"
-                            placeholder="Enter a URL"
-                            className="text-gray-500"
-                            value={input.instagram}
-                            onChange={handleChange}
-                          />
-                        </div>
-
-                      </div>
-
-                      {/* linkedin and github */}
-                      <div className='flex gap-2'>
-                        <div className='space-y-2'>
-                          <Label htmlFor="linkedin">Linkedin</Label>
-                          <Input
-                            name="linkedin"
-                            placeholder="Enter a URL"
-                            type="text"
-                            className="text-gray-500"
-                            value={input.linkedin}
-                            onChange={handleChange}
-                          />
-                        </div>
-                        <div className='space-y-2'>
-                          <Label htmlFor="github">
-                            Github
-                          </Label>
-                          <Input
-                            name="github"
-                            type="text"
-                            placeholder="Enter a URL"
-                            className="text-gray-500"
-                            value={input.github}
-                            onChange={handleChange}
-                          />
-                        </div>
-
-                      </div>
-
-                      {/* Bio */}
+                  <div className="grid gap-4">
+                    {/* first name and last name */}
+                    <div className='flex gap-2'>
                       <div className='space-y-2'>
-                        <Label className="text-right">Description</Label>
-                        <Textarea
-                          name="bio"
-                          className="col-span-3 text-gray-500"
-                          placeholder="Enter a description"
-                          value={input.bio}
+                        <Label htmlFor="firstName">First Name</Label>
+                        <Input
+                          name="firstName"
+                          placeholder="First Name"
+                          type="text"
+                          className="text-gray-500"
+                          value={input.firstName}
                           onChange={handleChange}
                         />
-
                       </div>
-
-                      {/* Picture */}
                       <div className='space-y-2'>
-                        <Label className="text-rigth">Picture</Label>
+                        <Label htmlFor="lastName">
+                          Last Name
+                        </Label>
                         <Input
-                          type="file"
-                          accept="image/*"
-                          className="w-full"
-                          onChange={handleFileChange}
+                          name="lastName"
+                          type="text"
+                          placeholder="Last Name"
+                          className="text-gray-500"
+                          value={input.lastName}
+                          onChange={handleChange}
                         />
                       </div>
+
                     </div>
-                    <DialogFooter>
-                      <DialogClose asChild>
-                        <Button variant="outline">Cancel</Button>
-                      </DialogClose>
-                      <Button
-                        onClick={handleSubmit} type="submit">Save changes</Button>
-                    </DialogFooter>
-                  </DialogContent>
-                </form>
+
+                    {/* facebook and instagram */}
+                    <div className='flex gap-2'>
+                      <div className='space-y-2'>
+                        <Label htmlFor="facebook">Facebook Name</Label>
+                        <Input
+                          name="facebook"
+                          placeholder="Enter a URL"
+                          type="text"
+                          className="text-gray-500"
+                          value={input.facebook}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className='space-y-2'>
+                        <Label htmlFor="instagram">
+                          Instagram
+                        </Label>
+                        <Input
+                          name="instagram"
+                          type="text"
+                          placeholder="Enter a URL"
+                          className="text-gray-500"
+                          value={input.instagram}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                    </div>
+
+                    {/* linkedin and github */}
+                    <div className='flex gap-2'>
+                      <div className='space-y-2'>
+                        <Label htmlFor="linkedin">Linkedin</Label>
+                        <Input
+                          name="linkedin"
+                          placeholder="Enter a URL"
+                          type="text"
+                          className="text-gray-500"
+                          value={input.linkedin}
+                          onChange={handleChange}
+                        />
+                      </div>
+                      <div className='space-y-2'>
+                        <Label htmlFor="github">
+                          Github
+                        </Label>
+                        <Input
+                          name="github"
+                          type="text"
+                          placeholder="Enter a URL"
+                          className="text-gray-500"
+                          value={input.github}
+                          onChange={handleChange}
+                        />
+                      </div>
+
+                    </div>
+
+                    {/* Bio */}
+                    <div className='space-y-2'>
+                      <Label className="text-right">Description</Label>
+                      <Textarea
+                        name="bio"
+                        className="col-span-3 text-gray-500"
+                        placeholder="Enter a description"
+                        value={input.bio}
+                        onChange={handleChange}
+                      />
+
+                    </div>
+
+                    {/* Picture */}
+                    <div className='space-y-2'>
+                      <Label className="text-rigth">Picture</Label>
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        className="w-full"
+                        onChange={handleFileChange}
+                      />
+                    </div>
+                  </div>
+                  <DialogFooter>
+                    <DialogClose asChild>
+                      <Button variant="outline">Cancel</Button>
+                    </DialogClose>
+                    <Button
+                      onClick={handleSubmit} type="submit">Save changes</Button>
+                  </DialogFooter>
+                </DialogContent>
               </Dialog>
             </div>
           </Card>
