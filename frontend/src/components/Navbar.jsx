@@ -120,25 +120,25 @@ const Navbar = () => {
                       <DropdownMenuContent className="w-56" align="start">
                         <DropdownMenuLabel>My Account</DropdownMenuLabel>
                         <DropdownMenuGroup>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem onClick={()=> navigate('/dashboard/profile')}>
                             {/* icon */}
                             <User />
                             Profile
                             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                           </DropdownMenuItem>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem onClick={()=> navigate('/dashboard/your-blog')}>
                             {/* icon */}
                             <ChartColumnBig />
                             Your Blogs
                             <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
+                          </DropdownMenuItem >
+                          <DropdownMenuItem onClick={()=> navigate('/dashboard/comments')}>
                             {/* icon */}
                             <LiaCommentSolid />
                             Comments
                             <DropdownMenuShortcut>⌘C</DropdownMenuShortcut>
                           </DropdownMenuItem>
-                          <DropdownMenuItem>
+                          <DropdownMenuItem onClick={()=> navigate('/dashboard/write-blog')}>
                             {/* icon */}
                             <FaRegEdit />
                             Write Blog
