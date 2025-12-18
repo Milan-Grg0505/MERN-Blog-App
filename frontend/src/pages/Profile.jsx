@@ -22,11 +22,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setLoading, setUser } from '@/redux/authSlice'
 import axios from 'axios'
 import { toast } from 'sonner'
+import { Loader2 } from 'lucide-react'
 
 const Profile = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const { user } = useSelector(state => state.auth);
+  const { user,loading } = useSelector(state => state.auth);
   const [input, setInput] = useState({
     firstName: user?.firstName,
     lastName: user?.lastName,
@@ -254,7 +255,7 @@ const Profile = () => {
                         accept="image/*"
                         className="w-full"
                         onChange={handleFileChange}
-                      />
+                      />j
                     </div>
                   </div>
                   <DialogFooter>
@@ -262,7 +263,14 @@ const Profile = () => {
                       <Button variant="outline">Cancel</Button>
                     </DialogClose>
                     <Button
-                      onClick={handleSubmit} type="submit">Save changes</Button>
+                      onClick={handleSubmit} type="submit">  {
+                    loading ? (
+                      <>
+                        <Loader2 className='mr-2 w-4 h-4 animate-spin' />
+                        Please wait
+                      </>
+                    ) : "Save Changes"
+                  }</Button>
                   </DialogFooter>
                 </DialogContent>
               </Dialog>
